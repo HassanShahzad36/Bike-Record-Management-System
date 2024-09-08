@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sign Up Page</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: gray; /* Using the named color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.signup-container {
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: black; /* Using the named color */
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0 16px 0;
+    display: inline-block;
+    border: 1px solid gainsboro; /* Using the named color */
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input:focus{
+    border-color: deepskyblue;
+    outline: none;
+}
+
+button {
+    background-color: deepskyblue; 
+    color: white;
+    padding: 14px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: dodgerblue; 
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+p.Sign\ in {
+    margin-top: 20px;
+}
+
+p.Sign\ in a {
+    color: deepskyblue; /* Using the named color */
+    text-decoration: none;
+}
+
+p.Sign\ in a:hover {
+    text-decoration: underline;
+    color: dodgerblue;
+}
+
+</style>
+</head>
+<body>
+<div class="signup-container">
+    <h2>Create an Account </h2>
+    <form id="signupForm" action="SignUp" method="POST" onsubmit="return validateForm()">
+        <input type="text" id="firstName" name="firstName" placeholder="First Name">
+        <div class="error" id="firstNameError"></div>
+        
+        <input type="text" id="lastName" name="lastName" placeholder="Last Name" >
+        <div class="error" id="lastNameError"></div>
+        
+        <input type="email" id="email" name="email" placeholder="Email" >
+        <div class="error" id="emailError"></div>
+        
+        <input type="password" id="password" name="password" placeholder="Password">
+        <div class="error" id="passwordError"></div>
+        
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+        <div class="error" id="confirmPasswordError"></div>
+        
+        <button type="submit">Sign Up</button>
+         <p class="Sign in">Already have an account? <a href="SignIn.html">Sign In</a></p>
+    </form>
+</div>
+
+<script>
+        function validateForm() {
+            // Clear previous error messages
+            document.getElementById('firstNameError').textContent = '';
+            document.getElementById('lastNameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('passwordError').textContent = '';
+            document.getElementById('confirmPasswordError').textContent = '';
+
+            // Get form values
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+            let isValid = true;
+
+            // Validate first name
+            if (!firstName) {
+                document.getElementById('firstNameError').textContent = 'First Name is required';
+                isValid = false;
+            }
+
+            // Validate last name
+            if (!lastName) {
+                document.getElementById('lastNameError').textContent = 'Last Name is required';
+                isValid = false;
+            }
+
+            // Validate email
+            if (!email) {
+                document.getElementById('emailError').textContent = 'Email is required';
+                isValid = false;
+            }
+
+            // Validate password
+            if (!password) {
+                document.getElementById('passwordError').textContent = 'Password is required';
+                isValid = false;
+            }
+
+            // Validate confirm password
+            if (!confirmPassword) {
+                document.getElementById('confirmPasswordError').textContent = 'Confirm Password is required';
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+
+</body>
+</html>

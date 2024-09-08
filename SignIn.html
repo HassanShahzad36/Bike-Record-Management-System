@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: black;
+}
+
+.form-group {
+    margin-bottom: 16px;
+    color:black;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 1px solid;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: deepskyblue;
+    outline: none;
+}
+
+select {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+button {
+    background-color: deepskyblue;
+    color: white;
+    padding: 14px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: dodgerblue;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+
+.signin-container {
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+
+</style>
+</head>
+
+<body>
+<div class="signin-container">
+<h2>Sign In</h2>
+    <form action="SignIn" method="POST" onsubmit="return validateForm()">
+        <div class="form-group"><input type="text" id="email" name="email" placeholder="Enter Email"></div>
+        <div class="error" id="emailError"></div>
+        
+        <div class="form-group"><input type="password" id="password" name="password" placeholder="Enter password"></div>
+       <div class="error" id="passwordError"></div>
+       
+        <div class="form-group">
+            <select id="usertype" name="usertype">
+                <option value="Admin">Admin</option>
+                <option value="Regular User">Regular User</option>
+            </select>
+        </div>
+        <button type="submit" class="btn">Sign In</button>
+    </form>
+    </div>
+<script>
+function validateForm() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    document.getElementById('emailError').textContent = '';
+    document.getElementById('passwordError').textContent = '';
+
+    let validate = true;
+    
+    if (!email) {
+        document.getElementById('emailError').textContent = 'Email is required';
+        validate = false;
+    }
+
+    // Validate password
+    if (!password) {
+        document.getElementById('passwordError').textContent = 'Password is required';
+        validate = false;
+    }
+
+    return validate; 
+}
+</script>
+
+</script>
+
+
+</body>
+
+</html>

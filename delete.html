@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: gray;
+    margin: 0;
+}
+
+.container {
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: black;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0 16px 0;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input:focus {
+    border-color: deepskyblue;
+    outline: none;
+}
+
+button {
+    background-color: deepskyblue; 
+    color: white;
+    padding: 14px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+button.logout {
+    background-color: red; 
+    width: 50%; 
+}
+
+button:hover {
+    background-color: dodgerblue; 
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+</style>
+
+
+</head>
+<body>
+<div class = "container">
+	<h2>Delete Bike Record</h2>
+		<form action="delete" method="POST" onsubmit="return validateForm()">
+		<input type="text" id="id" name="id" placeholder="Enter Number plate">
+        <div class="error" id="numberPlateError"></div>
+        
+        <input type="text" id="name" name="name" placeholder="Enter Bike Name" >
+        <div class="error" id="nameError"></div>
+        
+        <input type="text" id="model" name="model" placeholder="Enter Model of bike" >
+        <div class="error" id="modelError"></div>
+        
+        <button type="submit">Delete Record</button>
+        </form>
+         
+        <form action="logout" method="POST">
+    <button class="logout" type="submit">Log Out</button>
+</form>
+        </div>
+        
+<Script>
+
+function validateForm() {
+    // Clear previous error messages
+    document.getElementById('numberPlateError').textContent = '';
+    document.getElementById('nameError').textContent = '';
+    document.getElementById('modelError').textContent = '';
+
+    // Get form values
+    const id = document.getElementById('id').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const model = document.getElementById('model').value.trim();
+    let isValid = true;
+
+    // Validate first name
+    if (!id) {
+        document.getElementById('numberPlateError').textContent = 'Number plate is required';
+        isValid = false;
+    }
+
+    // Validate last name
+    if (!name) {
+        document.getElementById('nameError').textContent = 'Bike name is required';
+        isValid = false;
+    }
+
+    // Validate email
+    if (!model) {
+        document.getElementById('modelError').textContent = 'model is required';
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+</Script>
+        
+</body>
+</html>
